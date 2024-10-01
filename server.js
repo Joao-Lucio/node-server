@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const path = require("path");
 const { middlewareGlobal } = require("./src/middlewares/middleware");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const flash = require("connect-flash");
 
 // Conectando ao MongoDB
 mongoose
@@ -16,6 +19,19 @@ mongoose
   .catch((error) => {
     console.error("Erro ao conectar ao MongoDB:", error);
   });
+
+const sessionOptions = session({
+  secret: "asasnsasoa sdaseassas bsas fwsrfevasaassaisal sass",
+  store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7, // 7 dias
+    httpOnly: true,
+  },
+});
+app.use(sessionOptions);
+app.use(flash());
 
 app.use(express.urlencoded({ extended: true })); // Dizendo para o express tratar o body da requisição como um objeto
 app.use(express.static(path.resolve(__dirname, "public"))); // Definindo pasta para os arquivos estáticos como imagens, CSS e JavaScript
