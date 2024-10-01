@@ -1,21 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Modelo</title>
-  </head>
-  <body>
-    <section class="container">
-      <h1>Lorem ipsum dolor sit amet</h1>
-      <from action="/" method="POST">
-        <label>Cliente</label>
-        <input type="text" name="cliente" />
-        <button>Submit</button>
-      </from>
-    </section>
+<%- include('includes/head'); %>
+<section class="container">
+  <!-- ====================================== 
+       === ATIVANDO O EJS ===
+      <% %> 
+      =========================================== -->
+  <!-- ====================================== 
+       === Atribuindo o titulo que for passado por parametro para a pagina === 
+      <h1><%= titulo%></h1>
+      =========================================== -->
+  <!-- ======================================
+       === Atribuindo o titulo que for passado por parametro para a pagina, com o sinal de menos ele irá renderizar o que foi passado em html na string === 
+      <h1><%- tituloHTML%></h1> 
+      =========================================== -->
+  <!-- ======================================
+       ============= Verificação com if ==========
+      <h1><% if(typeof titulo !== 'undefined'){ %>
+        <%= titulo%>
+        <% } else { %>
+        O titulo não foi enviado.
+        <% } %> %></h1> 
+      ========================================= -->
+  <!-- ====================================
+       === Percorrendo um array ===
+      <h1>
+        <% numeros.forEach(num => { %>
+          <%= num %><br>
+        <% }); %> 
+      </h1> 
+      ========================================= -->
+  <h1>Lorem normal</h1>
+  <from action="/" method="POST">
+    <label>Cliente</label>
+    <input type="text" name="cliente" />
+    <button>Submit</button>
+  </from>
+</section>
 
-    <script src="./assets/js/bundle.js"></script>
-  </body>
-</html>
+<%- include('includes/footer')%>
