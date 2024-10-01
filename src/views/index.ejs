@@ -28,12 +28,13 @@
         <% }); %> 
       </h1> 
       ========================================= -->
-  <h1>Lorem normal</h1>
-  <from action="/" method="POST">
+  <h1><%= umaVarialLocal %></h1>
+  <from action="/" method="post">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
     <label>Cliente</label>
     <input type="text" name="cliente" />
     <button>Submit</button>
   </from>
 </section>
 
-<%- include('includes/footer')%>
+<%- include('includes/footer');%>

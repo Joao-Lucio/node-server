@@ -1,5 +1,12 @@
 exports.paginaInicial = (req, res, next) => {
+  // ================ Somente localmente ==================
+  // req.session.usuario = { nome: "Luiz", logado: true };
+  // req.flash("info", "Olá mundo!");
+  // req.flash("error", "Olá mundo!");
+  // req.flash("success", "Olá mundo!");
+  // ======================================================
   console.log(req.session.usuario);
+  console.log(req.flash("error"), req.flash("info"), req.flash("success"));
   // res.send(`<form action='/' method='POST'>
   //       Nome: <input type='text' name='nome'>
   //       Outro campo: <input type='text' name='outrocampo'>
